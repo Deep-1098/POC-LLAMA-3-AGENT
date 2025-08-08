@@ -1,0 +1,80 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+/* Button Styles */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Input and Textarea Styles */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Paragraph and Output Styles */
+p, pre {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+p {
+    min-height: 50px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f7f7f7;
+}
+
+/* Layout Styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+textarea {
+    resize: none;
+}

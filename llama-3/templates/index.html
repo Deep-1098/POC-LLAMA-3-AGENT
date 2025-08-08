@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llama 3 Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Llama 3 Demo</h1>
+    
+    <!-- Text Generation Demo -->
+    <h2>Story Generation</h2>
+    <input type="text" id="story-generation" placeholder="Give a topic">
+    <button onclick="generateText()">Generate Story</button>
+    <p id="text-generation-output"></p>
+    
+    <!-- Conversational Abilities Demo -->
+    <h2>Conversation</h2>
+    <input type="text" id="conversation-input" placeholder="Ask a question">
+    <button onclick="startConversation()">Ask</button>
+    <p id="conversation-output"></p>
+
+    <!-- Long-Form Summarization Demo -->
+    <h2>Summarization</h2>
+    <textarea id="document-input" placeholder="Paste a long document here..."></textarea>
+    <button onclick="summarizeDocument()">Summarize</button>
+    <p id="summarization-output"></p>
+
+    <!-- Code Generation Demo -->
+    <h2>Code Generation</h2>
+    <input type="text" id="code-generation" placeholder="Ask a Coding question">
+    <button onclick="generateCode()">Generate Code</button>
+    <pre id="code-generation-output"></pre>
+
+    <script>
+        async function generateText() {
+            const story = document.getElementById('story-generation').value;
+            const response = await fetch('/text-generation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ story })
+            });
+            const data = await response.json();
+            document.getElementById('text-generation-output').innerText = data.response;
+        }
+
+        async function startConversation() {
+            const prompt = document.getElementById('conversation-input').value;
+            const response = await fetch('/conversation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt })
+            });
+            const data = await response.json();
+            document.getElementById('conversation-output').innerText = data.response;
+        }
+
+        async function summarizeDocument() {
+            const documentText = document.getElementById('document-input').value;
+            const response = await fetch('/summarize', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ document: documentText })
+            });
+            const data = await response.json();
+            document.getElementById('summarization-output').innerText = data.response;
+        }
+        
+
+        async function generateCode() {
+            const response = await fetch('/code-generation', { method: 'POST' });
+            const data = await response.json();
+            document.getElementById('code-generation-output').innerText = data.response;
+        }
+    </script>
+</body>
+</html>
